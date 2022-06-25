@@ -14,6 +14,13 @@ class InventoryDashboardScreen extends StatelessWidget {
     'Storage',
   ];
 
+  List<Image> imageList = [
+    Image.asset('assets/parsellogo.png'),
+    Image.asset('assets/parsellogo.png'),
+    Image.asset('assets/parsellogo.png'),
+    Image.asset('assets/parsellogo.png')
+  ];
+
   inwardNavigation(context) {
     Navigator.push(context, MaterialPageRoute(builder: (_) => InwardScreen()));
   }
@@ -45,9 +52,9 @@ class InventoryDashboardScreen extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemCount: 4,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 1,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                childAspectRatio: 7,
               ),
               itemBuilder: (context, indx) {
                 return InkWell(
@@ -68,14 +75,22 @@ class InventoryDashboardScreen extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 12.0, top: 6.0, bottom: 2.0),
-                      child: Center(
-                          child: Text(
-                        listTitle[indx],
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                              height: 20,
+                              width: 20,
+                              child: Image.asset('assets/parsellogo.png')),
+                          Text(
+                            listTitle[indx],
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
